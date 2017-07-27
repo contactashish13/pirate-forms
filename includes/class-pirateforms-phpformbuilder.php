@@ -254,26 +254,30 @@ class PirateForms_PhpFormBuilder {
 
 		// Add honeypot anti-spam field
 		if ( $this->form['add_honeypot'] ) {
-			$this->add_input( 'Leave blank to submit', array(
-				'name'             => 'honeypot',
-				'slug'             => 'honeypot',
-				'id'               => 'form_honeypot',
-				'wrap_tag'         => 'div',
-				'wrap_class'       => array( 'form_field_wrap', 'hidden' ),
-				'wrap_id'          => '',
-				'wrap_style'       => 'display: none',
-				'request_populate' => false,
-			) );
+			$this->add_input(
+				'Leave blank to submit', array(
+					'name'             => 'honeypot',
+					'slug'             => 'honeypot',
+					'id'               => 'form_honeypot',
+					'wrap_tag'         => 'div',
+					'wrap_class'       => array( 'form_field_wrap', 'hidden' ),
+					'wrap_id'          => '',
+					'wrap_style'       => 'display: none',
+					'request_populate' => false,
+				)
+			);
 		}
 
 		// Add a WordPress nonce field
 		if ( $this->form['add_nonce'] && function_exists( 'wp_create_nonce' ) ) {
-			$this->add_input( 'WordPress nonce', array(
-				'value'            => wp_create_nonce( $this->form['add_nonce'] ),
-				'add_label'        => false,
-				'type'             => 'hidden',
-				'request_populate' => false,
-			) );
+			$this->add_input(
+				'WordPress nonce', array(
+					'value'            => wp_create_nonce( $this->form['add_nonce'] ),
+					'add_label'        => false,
+					'type'             => 'hidden',
+					'request_populate' => false,
+				)
+			);
 		}
 
 		// Iterate through the input queue and add input HTML
@@ -357,43 +361,16 @@ class PirateForms_PhpFormBuilder {
 					$end     = ' class="" type="' . $val['type'] . '">';
 					break;
 				case 'radio':
+					// do nothing
+					break;
 				case 'checkbox':
-
-					// Special case for multiple check boxes
-					if ( count( $val['options'] ) > 0 ) :
-						$element = '';
-						foreach ( $val['options'] as $key => $opt ) {
-							$slug = $this->_make_slug( $opt );
-							$end .= sprintf(
-								'<input type="%s" name="%s[]" value="%s" id="%s"',
-								$val['type'],
-								$val['name'],
-								$key,
-								$slug
-							);
-							if (
-								// Is this field set to automatically populate?
-								$val['request_populate'] &&
-
-								// Do we have $_REQUEST data to use?
-								isset( $_REQUEST[ $val['name'] ] ) &&
-
-								// Is the selected item(s) in the $_REQUEST data?
-								in_array( $key, $_REQUEST[ $val['name'] ] )
-							) {
-								$end .= ' checked';
-							}
-							$end .= $this->field_close();
-							$end .= ' <label for="' . $slug . '">' . $opt . '</label>';
-						}
-						$label_html = '<div class="checkbox_header">' . $val['label'] . '</div>';
-						break;
-					endif;
+					// do nothing
+					break;
 				case 'submit':
 					$element = 'div class="col-xs-12 col-sm-6 col-lg-6 form_field_wrap contact_submit_wrap"><button';
 					$end .= ' type="' . $val['type'] . '">' . $val['value'] . '</button></div>';
 					break;
-				default :
+				default:
 					$element = 'input';
 
 					/* don't add a placeholder attribute for input type=hidden */
@@ -447,7 +424,7 @@ class PirateForms_PhpFormBuilder {
 				if ( $val['type'] === 'checkbox' ) {
 					$field = '
 					<' . $element . $id . ' name="' . $val['name'] . '"' . $min_max_range . $class . $attr . $end .
-					         $field;
+							 $field;
 				} elseif ( $val['type'] === 'captcha' ) { /* don't add name attribute to div's holding recaptcha keys */
 					$field .= '
 					<' . $element . $id . ' ' . $min_max_range . $class . $attr . $end;

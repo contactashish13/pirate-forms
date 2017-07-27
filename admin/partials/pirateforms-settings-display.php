@@ -152,18 +152,21 @@
 
 										<div class="pirate-forms-grouped <?php echo $pirate_forms_is_hidden_class; ?>">
 
-											<label for="<?php echo $opt_id ?>"><?php echo $opt_name;
-											if ( ! empty( $opt_desc ) ) {
-												if ( ( $opt_id == 'pirateformsopt_email' ) || ( $opt_id == 'pirateformsopt_email_recipients' ) || ( $opt_id == 'pirateformsopt_confirm_email' ) ) {
-													echo '<span class="dashicons dashicons-editor-help"></span>';
+											<label for="<?php echo $opt_id; ?>">
+																	<?php
+																	echo $opt_name;
+																	if ( ! empty( $opt_desc ) ) {
+																		if ( ( $opt_id == 'pirateformsopt_email' ) || ( $opt_id == 'pirateformsopt_email_recipients' ) || ( $opt_id == 'pirateformsopt_confirm_email' ) ) {
+																			echo '<span class="dashicons dashicons-editor-help"></span>';
 
-												}
-												echo '<div class="pirate_forms_option_description">' . $opt_desc . '</div>';
-											} ?>
+																		}
+																		echo '<div class="pirate_forms_option_description">' . $opt_desc . '</div>';
+																	}
+											?>
 
 											</label>
 
-											<input name="<?php echo $opt_id; ?>" id="<?php echo $opt_id ?>"
+											<input name="<?php echo $opt_id; ?>" id="<?php echo $opt_id; ?>"
 												   type="<?php echo $opt_type; ?>"
 												   value="<?php echo stripslashes( $opt_val ); ?>" class="widefat">
 										</div>
@@ -174,14 +177,17 @@
 										?>
 										<div class="pirate-forms-grouped">
 
-											<label for="<?php echo $opt_id ?>"><?php echo $opt_name;
-											if ( ! empty( $opt_desc ) ) {
-												echo '<div class="pirate_forms_option_description">' . $opt_desc . '</div>';
-											} ?>
+											<label for="<?php echo $opt_id; ?>">
+																	<?php
+																	echo $opt_name;
+																	if ( ! empty( $opt_desc ) ) {
+																		echo '<div class="pirate_forms_option_description">' . $opt_desc . '</div>';
+																	}
+											?>
 
 											</label>
 
-											<input name="<?php echo $opt_id; ?>" id="<?php echo $opt_id ?>"
+											<input name="<?php echo $opt_id; ?>" id="<?php echo $opt_id; ?>"
 												   type="<?php echo $opt_type; ?>"
 												   value="<?php echo stripslashes( $opt_val ); ?>">
 										</div>
@@ -193,18 +199,21 @@
 
 										<div class="pirate-forms-grouped">
 
-											<label for="<?php echo $opt_id ?>"><?php echo $opt_name;
-											if ( ! empty( $opt_desc ) ) {
-												if ( ( $opt_id == 'pirateformsopt_confirm_email' ) ) {
-													echo '<span class="dashicons dashicons-editor-help"></span>';
+											<label for="<?php echo $opt_id; ?>">
+																	<?php
+																	echo $opt_name;
+																	if ( ! empty( $opt_desc ) ) {
+																		if ( ( $opt_id == 'pirateformsopt_confirm_email' ) ) {
+																			echo '<span class="dashicons dashicons-editor-help"></span>';
 
-												}
-												echo '<div class="pirate_forms_option_description">' . $opt_desc . '</div>';
-											} ?>
+																		}
+																		echo '<div class="pirate_forms_option_description">' . $opt_desc . '</div>';
+																	}
+											?>
 
 											</label>
 
-											<textarea name="<?php echo $opt_id; ?>" id="<?php echo $opt_id ?>"
+											<textarea name="<?php echo $opt_id; ?>" id="<?php echo $opt_id; ?>"
 													  type="<?php echo $opt_type; ?>" rows="5"
 													  cols="30"><?php echo stripslashes( $opt_val ); ?></textarea>
 										</div>
@@ -215,19 +224,22 @@
 										?>
 										<div class="pirate-forms-grouped">
 
-											<label for="<?php echo $opt_id ?>"><?php echo $opt_name;
-											if ( ! empty( $opt_desc ) ) {
-												if ( ( $opt_id == 'pirateformsopt_thank_you_url' ) ) {
-													echo '<span class="dashicons dashicons-editor-help"></span>';
+											<label for="<?php echo $opt_id; ?>">
+																	<?php
+																	echo $opt_name;
+																	if ( ! empty( $opt_desc ) ) {
+																		if ( ( $opt_id == 'pirateformsopt_thank_you_url' ) ) {
+																			echo '<span class="dashicons dashicons-editor-help"></span>';
 
-												}
-												echo '<div class="pirate_forms_option_description">' . $opt_desc . '</div>';
+																		}
+																		echo '<div class="pirate_forms_option_description">' . $opt_desc . '</div>';
 
-											} ?>
+																	}
+											?>
 
 											</label>
 
-											<select name="<?php echo $opt_id ?>" id="<?php echo $opt_id; ?>">
+											<select name="<?php echo $opt_id; ?>" id="<?php echo $opt_id; ?>">
 												<?php
 												foreach ( $opt_options as $key => $val ) :
 													$selected = '';
@@ -235,7 +247,7 @@
 														$selected = 'selected';
 													}
 													?>
-													<option value="<?php echo $key ?>" <?php echo $selected; ?>><?php echo $val; ?></option>
+													<option value="<?php echo $key; ?>" <?php echo $selected; ?>><?php echo $val; ?></option>
 												<?php endforeach; ?>
 											</select>
 
@@ -249,14 +261,17 @@
 										}
 										?>
 										<div class="pirate-forms-grouped">
-											<label for="<?php echo $opt_id ?>"><?php echo $opt_name;
-											if ( ! empty( $opt_desc ) ) {
-												if ( ( $opt_id == 'pirateformsopt_store' ) || ( $opt_id == 'pirateformsopt_nonce' ) ) {
-													echo '<span class="dashicons dashicons-editor-help"></span>';
+											<label for="<?php echo $opt_id; ?>">
+																	<?php
+																	echo $opt_name;
+																	if ( ! empty( $opt_desc ) ) {
+																		if ( ( $opt_id == 'pirateformsopt_store' ) || ( $opt_id == 'pirateformsopt_nonce' ) ) {
+																			echo '<span class="dashicons dashicons-editor-help"></span>';
 
-												}
-												echo '<div class="pirate_forms_option_description">' . $opt_desc . '</div>';
-											} ?>
+																		}
+																		echo '<div class="pirate_forms_option_description">' . $opt_desc . '</div>';
+																	}
+											?>
 
 											</label>
 
@@ -268,8 +283,8 @@
 													$checked    = 'checked';
 												}
 											?>
-											<input type="radio" value="<?php echo $key1;?>" name="<?php echo $opt_id; ?>"
-										   id="<?php echo $opt_id; ?><?php echo $key1 ?>" <?php echo $checked; ?>><?php echo $label1;?>
+											<input type="radio" value="<?php echo $key1; ?>" name="<?php echo $opt_id; ?>"
+										   id="<?php echo $opt_id; ?><?php echo $key1; ?>" <?php echo $checked; ?>><?php echo $label1; ?>
 											&nbsp;
 
 											<?php
@@ -282,14 +297,17 @@
 										?>
 										<div class="pirate-forms-grouped">
 
-											<label for="<?php echo $opt_id ?>"><?php echo $opt_name;
-											if ( ! empty( $opt_desc ) ) {
-												if ( ( $opt_id == 'pirateformsopt_store' ) || ( $opt_id == 'pirateformsopt_nonce' ) ) {
-													echo '<span class="dashicons dashicons-editor-help"></span>';
+											<label for="<?php echo $opt_id; ?>">
+																	<?php
+																	echo $opt_name;
+																	if ( ! empty( $opt_desc ) ) {
+																		if ( ( $opt_id == 'pirateformsopt_store' ) || ( $opt_id == 'pirateformsopt_nonce' ) ) {
+																			echo '<span class="dashicons dashicons-editor-help"></span>';
 
-												}
-												echo '<div class="pirate_forms_option_description">' . $opt_desc . '</div>';
-											} ?>
+																		}
+																		echo '<div class="pirate_forms_option_description">' . $opt_desc . '</div>';
+																	}
+											?>
 
 											</label>
 
@@ -310,11 +328,11 @@
 								}// End switch().
 							endforeach;
 							?>
-							<input name="save" type="submit" value="<?php _e( 'Save changes', 'pirate-forms' ) ?>"
+							<input name="save" type="submit" value="<?php _e( 'Save changes', 'pirate-forms' ); ?>"
 								   class="button-primary pirate-forms-save-button">
 							<input type="hidden" name="action" value="save">
 							<input type="hidden" name="proper_nonce"
-								   value="<?php echo wp_create_nonce( $current_user->user_email ) ?>">
+								   value="<?php echo wp_create_nonce( $current_user->user_email ); ?>">
 
 						</form><!-- .pirate_forms_contact_settings -->
 						<div class="ajaxAnimation"></div>

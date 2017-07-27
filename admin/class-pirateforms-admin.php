@@ -66,9 +66,11 @@ class PirateForms_Admin {
 		) {
 			wp_enqueue_style( 'pirateforms_admin_styles', PIRATEFORMS_URL . 'admin/css/wp-admin.css', array(), $this->version );
 			wp_enqueue_script( 'pirateforms_scripts_admin', PIRATEFORMS_URL . 'admin/js/scripts-admin.js', array( 'jquery' ), $this->version );
-			wp_localize_script( 'pirateforms_scripts_admin', 'cwp_top_ajaxload', array(
-				'ajaxurl' => admin_url( 'admin-ajax.php' ),
-			) );
+			wp_localize_script(
+				'pirateforms_scripts_admin', 'cwp_top_ajaxload', array(
+					'ajaxurl' => admin_url( 'admin-ajax.php' ),
+				)
+			);
 		}
 	}
 
@@ -165,10 +167,12 @@ class PirateForms_Admin {
 		$content = array(
 			'' => __( 'None', 'pirate-forms' ),
 		);
-		$items   = get_posts( array(
-			'post_type'   => $type,
-			'numberposts' => - 1,
-		) );
+		$items   = get_posts(
+			array(
+				'post_type'   => $type,
+				'numberposts' => - 1,
+			)
+		);
 		if ( ! empty( $items ) ) :
 			foreach ( $items as $item ) :
 				$content[ $item->ID ] = $item->post_title;
