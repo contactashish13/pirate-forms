@@ -1188,6 +1188,9 @@ class PirateForms_Admin {
 			}
 		}
 
+		$pirate_forms_options = PirateForms_Util::get_option();
+		$export_items   = apply_filters( 'pirate_forms_private_data_exporter', $export_items, $email_address, $page, $pirate_forms_options );
+
 		return array(
 			'data'  => $export_items,
 			'done'  => true,
@@ -1237,6 +1240,9 @@ class PirateForms_Admin {
 				}
 			}
 		}
+
+		$pirate_forms_options = PirateForms_Util::get_option();
+		list( $retained, $removed ) = apply_filters( 'pirate_forms_private_data_eraser', array( $retained, $removed ), $email_address, $page, $pirate_forms_options );
 
 		return array(
 			'items_removed' => $removed,
