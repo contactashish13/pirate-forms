@@ -1168,16 +1168,19 @@ class PirateForms_Admin {
 			)
 		);
 
+		$pirate_forms_options = PirateForms_Util::get_option();
+
 		if ( $query->have_posts() ) {
 			while ( $query->have_posts() ) {
 				$query->the_post();
 
-				$data       = array(
-					array(
-						'name'  => __( 'Email content', 'pirate-forms' ),
-						'value' => nl2br( strip_tags( $query->post->post_content ) ),
-					),
+				$data       = array();
+				$data[]     = array(
+					'name'  => __( 'Email content', 'pirate-forms' ),
+					'value' => nl2br( strip_tags( $query->post->post_content ) ),
 				);
+
+				$data       = apply_filters( 'pirate_forms_private_data_exporter', $data, $query->post->ID, $email_address, $page, $pirate_forms_options );
 
 				$export_items[] = array(
 					'group_id' => 'pf_contact',
@@ -1187,9 +1190,6 @@ class PirateForms_Admin {
 				);
 			}
 		}
-
-		$pirate_forms_options = PirateForms_Util::get_option();
-		$export_items   = apply_filters( 'pirate_forms_private_data_exporter', $export_items, $email_address, $page, $pirate_forms_options );
 
 		return array(
 			'data'  => $export_items,
@@ -1230,6 +1230,8 @@ class PirateForms_Admin {
 		$retained   = array();
 		$removed    = 0;
 
+		$pirate_forms_options = PirateForms_Util::get_option();
+
 		if ( $query->have_posts() ) {
 			while ( $query->have_posts() ) {
 				$query->the_post();
@@ -1238,11 +1240,10 @@ class PirateForms_Admin {
 				} else {
 					$retained[] = $query->post;
 				}
+
+				list( $retained, $removed ) = apply_filters( 'pirate_forms_private_data_eraser', array( $retained, $removed ), $query->post, $email_address, $page, $pirate_forms_options );
 			}
 		}
-
-		$pirate_forms_options = PirateForms_Util::get_option();
-		list( $retained, $removed ) = apply_filters( 'pirate_forms_private_data_eraser', array( $retained, $removed ), $email_address, $page, $pirate_forms_options );
 
 		return array(
 			'items_removed' => $removed,
